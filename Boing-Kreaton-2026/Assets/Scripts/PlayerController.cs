@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     InputAction moveAction;
 
     //TEST!!!!
-    InputAction interactAction;
+    //InputAction interactAction;
     //TEST!!!!
 
     private void Awake()
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
 
         //TEST!!!!
-        interactAction = InputSystem.actions.FindAction("Interact");
+        //interactAction = InputSystem.actions.FindAction("Interact");
         //TEST!!!!
     }
 
@@ -35,10 +35,10 @@ public class PlayerController : MonoBehaviour
 
 
         //TEST!!!!
-        if (interactAction.IsPressed())
-        {
-            gameObject.transform.position = respawnPos;
-        }
+        //if (interactAction.IsPressed())
+        //{
+        //    gameObject.transform.position = respawnPos;
+        //}
         //TEST!!!!
     }
 
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
 
         //TEST!!!!
-        Gizmos.DrawWireSphere(respawnPos, 1f);
+        //Gizmos.DrawWireSphere(respawnPos, 1f);
         //TEST!!!!
     }
 }
