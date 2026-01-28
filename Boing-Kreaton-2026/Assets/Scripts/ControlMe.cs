@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class ControlMe : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float minMaterialBounce;

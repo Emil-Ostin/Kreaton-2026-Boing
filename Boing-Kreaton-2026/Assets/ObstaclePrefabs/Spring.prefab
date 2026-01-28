@@ -278,3 +278,5 @@ MonoBehaviour:
   root: {fileID: 7494847211327583470}
   maximumStretch: 2
   minimumStretch: 0.6
+  resetTime: 0.76
+  hasSaved: 0

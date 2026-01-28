@@ -12,7 +12,7 @@ public class PlayerCamera : MonoBehaviour
     public Vector3 offset;
 
     [Header("Follower")]
-    [SerializeField] Transform playerObject;
+    public Transform playerObject;
 
     [Header("Screen Shake")]
     [SerializeField] float shakeDuration = 0.1f;

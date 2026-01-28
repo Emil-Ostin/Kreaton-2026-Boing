@@ -15,6 +15,7 @@ public class SavePoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (saved || !saveManager.savePoints.Contains(this)) return;
+        if (other.tag != "Player") return;
 
         saveManager.currentSavePoint = this;
         saveManager.SavePointCleaner();

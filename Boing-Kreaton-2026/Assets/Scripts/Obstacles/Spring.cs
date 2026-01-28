@@ -13,6 +13,10 @@ public class Spring : MonoBehaviour
     [SerializeField] float minimumStretch;
     float yStretch;
 
+    [Header("Reset Failsafe")]
+    [SerializeField] float resetTime;
+    public float resetTimer;
+
     Transform playerObject;
     Rigidbody2D playerRigidbody;
 
@@ -20,9 +24,14 @@ public class Spring : MonoBehaviour
 
     private void Update()
     {
+        if (hasSaved && resetTimer > 0)
+            resetTimer -= Time.deltaTime;
+        else if (hasSaved && resetTimer < 0)
+            hasSaved = false;
+
         if (playerObject == null) // If there is no player on the spring, then reset spring
         {
-            root.localScale = Vector2.Lerp(root.localScale, new Vector2(root.localScale.x,1), .05f);
+            root.localScale = Vector2.Lerp(root.localScale, new Vector2(root.localScale.x, 1), .05f);
             return;
         }
 
@@ -71,6 +80,8 @@ public class Spring : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<Rigidbody2D>() == null || hasSaved) return;
+
+        resetTimer = resetTime;
 
         hasSaved = true;
 
