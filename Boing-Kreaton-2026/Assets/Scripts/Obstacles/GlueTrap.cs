@@ -8,6 +8,12 @@ public class GlueTrap : MonoBehaviour
     private void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.GetComponent<Rigidbody2D>() == null) return;
+        if (other.gameObject.GetComponent<PlayerController>() != null)
+        {
+            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+            playerController.glued = true;
+            playerController.glueVelocity = minimumVelocityThreshhold;
+        }
 
         Rigidbody2D ballBody = other.gameObject.GetComponent<Rigidbody2D>();
 
@@ -19,6 +25,16 @@ public class GlueTrap : MonoBehaviour
         else
         {
             ballBody.linearVelocity = new Vector2(ballBody.linearVelocity.x, ballBody.linearVelocity.y);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<Rigidbody2D>() == null) return;
+        if (other.gameObject.GetComponent<PlayerController>() != null)
+        {
+            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+            playerController.glued = false;
         }
     }
 }

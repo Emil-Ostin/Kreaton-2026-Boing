@@ -480,7 +480,7 @@ MonoBehaviour:
   damping: 0.3
   distanceThreshold: 0.75
   offset: {x: 0, y: 0, z: 0}
-  playerObject: {fileID: 2068918473}
+  playerObject: {fileID: 0}
   shakeDuration: 0.1
   shakeMagnitude: 0.1
   shakeFalloff:
@@ -1100,7 +1100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0cd55aabc3461c4cbbcb8e59af4d4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlueTrap
-  minimumVelocityThreshhold: 5
+  minimumVelocityThreshhold: 2
   lerpTime: 20
 --- !u!61 &1290820130
 BoxCollider2D:
@@ -1299,6 +1299,71 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.1, y: 0.49}
   m_EdgeRadius: 0
+--- !u!1001 &1548557132
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3107482096464262673, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: respawnPos.x
+      value: -7.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107482096464262673, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: respawnPos.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902896708765068835, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: m_Name
+      value: Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2617129
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.9283037
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
 --- !u!1 &1549265610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,7 +1376,6 @@ GameObject:
   - component: {fileID: 1549265611}
   - component: {fileID: 1549265614}
   - component: {fileID: 1549265613}
-  - component: {fileID: 1549265615}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -1456,26 +1520,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &1549265615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1549265610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf212ef5b3871e4dbaa20b217cf3bcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ControlMe
-  moveSpeed: 10
-  minMaterialBounce: 0.2
-  maxFallVelocity: 10
-  groundCheckPosition: {x: 0, y: -0.13}
-  groundCheckSize: {x: 1.11, y: 0.52}
-  respawnPos: {x: 0, y: 0}
-  respawnTime: 1
-  corpsePrefab: {fileID: 2376287595794634684, guid: 7c1ff8d5ceef00f48bbd997b46cb31d5, type: 3}
 --- !u!1 &1580854434
 GameObject:
   m_ObjectHideFlags: 0
@@ -2139,7 +2183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2068918470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2155,11 +2199,14 @@ MonoBehaviour:
   moveSpeed: 10
   minMaterialBounce: 0.2
   maxFallVelocity: 10
+  glueVelocity: 0
+  glued: 0
   groundCheckPosition: {x: 0, y: 0.36}
   groundCheckSize: {x: 1.19, y: 0.52}
   respawnPos: {x: 3.31, y: -0.06}
   respawnTime: 3
-  corpsePrefab: {fileID: 2376287595794634684, guid: 7c1ff8d5ceef00f48bbd997b46cb31d5, type: 3}
+  corpsePartsVFX: {fileID: 0}
+  dustParticles: {fileID: 0}
 --- !u!61 &2068918471
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2359,6 +2406,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 2856bb848728b6b429da4d0d49489db6, type: 2}
+    - target: {fileID: 8045667684803027228, guid: e7b4902b448adcd4081765be03e08f49, type: 3}
+      propertyPath: minimumVelocityThreshhold
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8896642644656914732, guid: e7b4902b448adcd4081765be03e08f49, type: 3}
       propertyPath: m_Name
       value: Square (2)
@@ -2508,3 +2559,4 @@ SceneRoots:
   - {fileID: 377910440}
   - {fileID: 1713358050}
   - {fileID: 2068918473}
+  - {fileID: 1548557132}

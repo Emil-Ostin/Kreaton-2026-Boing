@@ -4,16 +4,22 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Velocity")]
     [SerializeField] float moveSpeed;
     [SerializeField] float minMaterialBounce;
     [SerializeField] float maxFallVelocity;
+    public float glueVelocity;
+    public bool glued;
+
+    [Header("Checks")]
     [SerializeField] Vector2 groundCheckPosition;
     [SerializeField] Vector2 groundCheckSize;
     [SerializeField] Vector2 respawnPos;
 
     [Header("Respawn Timer")]
     [SerializeField] float respawnTime;
-    [SerializeField] GameObject corpsePrefab;
+    [SerializeField] GameObject corpsePartsVFX;
+    [SerializeField] GameObject dustParticles;
     bool dead;
 
     SaveManager saveManager;
@@ -56,10 +62,17 @@ public class PlayerController : MonoBehaviour
 
     void playerMove()
     {
-        if (CheckGround())
+        if (CheckGround() && !glued)
         {
             Vector2 moveVector = moveAction.ReadValue<Vector2>();
             myRigidbody.linearVelocity = new Vector2(myRigidbody.linearVelocity.x + moveVector.x * moveSpeed, myRigidbody.linearVelocity.y);
+
+            myRigidbody.linearVelocity = new Vector2(Mathf.Clamp(myRigidbody.linearVelocity.x, -moveSpeed, moveSpeed), myRigidbody.linearVelocity.y);
+        }
+        else if (CheckGround() && glued)
+        {
+            Vector2 moveVector = moveAction.ReadValue<Vector2>();
+            myRigidbody.linearVelocity = new Vector2(myRigidbody.linearVelocity.x + moveVector.x * glueVelocity, myRigidbody.linearVelocity.y);
 
             myRigidbody.linearVelocity = new Vector2(Mathf.Clamp(myRigidbody.linearVelocity.x, -moveSpeed, moveSpeed), myRigidbody.linearVelocity.y);
         }
@@ -84,7 +97,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DeathRespawn(Vector2 respawnPosition)
     {
-        GameObject corpseObject = Instantiate(corpsePrefab, transform.position, Quaternion.identity);
+        Instantiate(dustParticles, transform.position, Quaternion.identity);
+        GameObject corpseObject = Instantiate(corpsePartsVFX, transform.position, Quaternion.identity);
         playerCamera.playerObject = corpseObject.transform;
         transform.position = respawnPosition;
 

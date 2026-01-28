@@ -150,5 +150,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0cd55aabc3461c4cbbcb8e59af4d4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlueTrap
-  minimumVelocityThreshhold: 5
+  minimumVelocityThreshhold: 2
   lerpTime: 20
