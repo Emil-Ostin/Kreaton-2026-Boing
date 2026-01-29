@@ -12,9 +12,13 @@ public class PlayerController : MonoBehaviour
     public bool glued;
 
     [Header("Checks")]
+    [SerializeField] Transform starterPos;
     [SerializeField] Vector2 groundCheckPosition;
     [SerializeField] Vector2 groundCheckSize;
-    [SerializeField] Vector2 respawnPos;
+
+    [Header("Camera Shake")]
+    [SerializeField] float jumpShakeDuration;
+    float shakeMagnitude;
 
     [Header("Respawn Timer")]
     [SerializeField] float respawnTime;
@@ -51,7 +55,6 @@ public class PlayerController : MonoBehaviour
         CheckGround();
         playerMove();
 
-
         //TEST!!!!
         //if (interactAction.IsPressed())
         //{
@@ -83,6 +86,12 @@ public class PlayerController : MonoBehaviour
     {
         Collider2D isGrounded = Physics2D.OverlapBox(transform.position + (Vector3)groundCheckPosition, groundCheckSize, 0);
 
+        if (myRigidbody.linearVelocity.y < 0)
+        {
+            shakeMagnitude = myRigidbody.linearVelocity.y * -0.025f;
+            playerCamera.ShakeTrigger(jumpShakeDuration, shakeMagnitude);
+        }
+
         return isGrounded;
     }
 
@@ -91,8 +100,13 @@ public class PlayerController : MonoBehaviour
         dead = true;
         myRigidbody.linearVelocity = Vector2.zero;
 
-        if (saveManager.currentSavePoint == null) { StartCoroutine(DeathRespawn(respawnPos)); }
+        if (saveManager.currentSavePoint == null && starterPos != null) { StartCoroutine(DeathRespawn(starterPos.position)); }
         else if (saveManager.currentSavePoint != null) { StartCoroutine(DeathRespawn(saveManager.currentSavePoint.transform.position)); }
+        else
+        {
+            Debug.Log("No starting position!");
+            return;
+        }
     }
 
     IEnumerator DeathRespawn(Vector2 respawnPosition)
