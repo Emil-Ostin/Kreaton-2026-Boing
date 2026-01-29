@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     [Header("Death SFX")]
     [SerializeField] AudioClip[] deathClip;
     [SerializeField] AudioClip ashClip;
+    [SerializeField] GameObject deathSprite;
+
+    [SerializeField] LayerMask groundLayer;
 
     SaveManager saveManager;
     Rigidbody2D myRigidbody;
@@ -64,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     void playerMove()
     {
-        if (moveAction.ReadValue<Vector2>().x != 0)
+        if (moveAction.ReadValue<Vector2>().x != 0 && CheckGround() && !dead)
         {
             anim.SetBool("IsWalking", true);
         }
@@ -73,14 +76,14 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("IsWalking", false);
         }
 
-        if (CheckGround() && !glued)
+        if (!glued)
         {
             Vector2 moveVector = moveAction.ReadValue<Vector2>();
             myRigidbody.linearVelocity = new Vector2(myRigidbody.linearVelocity.x + moveVector.x * moveSpeed, myRigidbody.linearVelocity.y);
 
             myRigidbody.linearVelocity = new Vector2(Mathf.Clamp(myRigidbody.linearVelocity.x, -moveSpeed, moveSpeed), myRigidbody.linearVelocity.y);
         }
-        else if (CheckGround() && glued)
+        else if (glued)
         {
             Vector2 moveVector = moveAction.ReadValue<Vector2>();
             myRigidbody.linearVelocity = new Vector2(myRigidbody.linearVelocity.x + moveVector.x * glueVelocity, myRigidbody.linearVelocity.y);
@@ -92,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     bool CheckGround()
     {
-        Collider2D isGrounded = Physics2D.OverlapBox(transform.position + (Vector3)groundCheckPosition, groundCheckSize, 0);
+        Collider2D isGrounded = Physics2D.OverlapBox(transform.position + (Vector3)groundCheckPosition, groundCheckSize, 0, groundLayer);
 
         if (myRigidbody.linearVelocity.y < 0)
         {
@@ -146,11 +149,15 @@ public class PlayerController : MonoBehaviour
         Instantiate(dustParticles, transform.position, Quaternion.identity);
         GameObject corpseObject = Instantiate(corpsePartsVFX, transform.position, Quaternion.identity);
         playerCamera.playerObject = corpseObject.transform;
-        transform.position = respawnPosition;
+        Instantiate(deathSprite, transform.position + new Vector3(0, 0.4f, 0), Quaternion.identity);
+        anim.SetBool("IsDead", true);
 
         yield return new WaitForSeconds(respawnTime);
+        transform.position = respawnPosition;
+        Debug.Log("Moved Player");
 
         playerCamera.playerObject = transform;
+        anim.SetBool("IsDead", false);
         dead = false;
         yield break;
     }

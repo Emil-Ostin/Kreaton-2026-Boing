@@ -147,8 +147,8 @@ Transform:
   m_GameObject: {fileID: 96041001}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.96, y: -2.38, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalPosition: {x: 11.96, y: -1.5311, z: 0}
+  m_LocalScale: {x: 1, y: 3.6978, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 903393228}
@@ -481,6 +481,10 @@ MonoBehaviour:
   dustParticles: {fileID: 0}
   deathClip: []
   ashClip: {fileID: 0}
+  deathSprite: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &239013787
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1012,13 +1016,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821163730}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.4453387, w: 0.89536214}
-  m_LocalPosition: {x: 10.6951, y: -2.8606, z: 0}
-  m_LocalScale: {x: 1.4189, y: 3.0064583, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.5038874, w: 0.86376935}
+  m_LocalPosition: {x: 8.7729, y: -2.1852, z: 0}
+  m_LocalScale: {x: 1.7191188, y: 7.093725, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 903393228}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -52.89}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60.515}
 --- !u!50 &821163732
 Rigidbody2D:
   serializedVersion: 5
@@ -1340,33 +1344,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
   m_PrefabInstance: {fileID: 1201776568}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1161713642 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2739410893562822302, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
-  m_PrefabInstance: {fileID: 1201776568}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1161713645
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161713642}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a904f215e576343448558892ab938c3d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1201776568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1379,17 +1356,29 @@ PrefabInstance:
       propertyPath: starterPos
       value: 
       objectReference: {fileID: 912311651}
+    - target: {fileID: 3107482096464262673, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 8928976685870415880, guid: 7f888d468764ae345954a430f506fd1a, type: 3}
+    - target: {fileID: 3107482096464262673, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107482096464262673, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      propertyPath: groundCheckPosition.y
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3902896708765068835, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.43319
+      value: 1.77
       objectReference: {fileID: 0}
     - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.16302
+      value: -1.93
       objectReference: {fileID: 0}
     - target: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1426,10 +1415,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2739410893562822302, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1161713645}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
 --- !u!1 &1216125763
 GameObject:
