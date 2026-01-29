@@ -1335,6 +1335,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62fa903c05a83d48af3a0043327df84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavePoint
+--- !u!4 &1009389292 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4438080441677611518, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+  m_PrefabInstance: {fileID: 1201776568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1161713642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2739410893562822302, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+  m_PrefabInstance: {fileID: 1201776568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1161713645
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161713642}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a904f215e576343448558892ab938c3d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1201776568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1344,17 +1376,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3107482096464262673, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
-      propertyPath: moveSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3107482096464262673, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
       propertyPath: starterPos
       value: 
       objectReference: {fileID: 912311651}
-    - target: {fileID: 3107482096464262673, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
-      propertyPath: maxFallVelocity
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3902896708765068835, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -1402,7 +1426,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2739410893562822302, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1161713645}
   m_SourcePrefab: {fileID: 100100000, guid: 7971ae000a1200149b16e3ba0a4acb93, type: 3}
 --- !u!1 &1216125763
 GameObject:
@@ -1874,7 +1901,7 @@ MonoBehaviour:
   damping: 0.3
   distanceThreshold: 0.75
   offset: {x: 0, y: 0, z: 0}
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 1009389292}
   shakeDuration: 0.1
   shakeMagnitude: 0.1
   shakeFalloff:
