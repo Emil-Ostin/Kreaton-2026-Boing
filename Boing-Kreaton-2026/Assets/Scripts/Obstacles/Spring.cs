@@ -20,9 +20,13 @@ public class Spring : MonoBehaviour
     [Header("VSX Boing")]
     [SerializeField] AudioClip[] boingClip;
 
+    [Header("Animation")]
+
+
     Transform playerObject;
     Rigidbody2D playerRigidbody;
     AudioSource audioSource;
+    Animator animator;
 
     bool hasSaved;
     int boingClipInt;
@@ -30,6 +34,7 @@ public class Spring : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
