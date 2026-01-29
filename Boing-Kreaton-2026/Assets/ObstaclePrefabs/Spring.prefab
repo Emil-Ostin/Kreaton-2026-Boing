@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2528598966370784596}
   - component: {fileID: 8210178307987544318}
+  - component: {fileID: 6879735023873994530}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -58,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 5874984687842795348}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.46, z: 0}
+  m_LocalPosition: {x: 0, y: 0.232, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -111,7 +112,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -1961900865478407530, guid: f7cf3126be3209c43a981c1be801b374, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,6 +123,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6879735023873994530
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5874984687842795348}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 73a9cce9ced97c2499e51e178ce1ed33, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8248873618983709888
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +308,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ca121d37f82e65c4086f7a9db867678b, type: 3}
   - {fileID: 8300000, guid: dec382a1a1a4e7444a746b344d7b62fb, type: 3}
   - {fileID: 8300000, guid: 26997ef07f171444daf92cd0b4897d48, type: 3}
+  boingBoing: {fileID: 7400000, guid: e28161ca3fd84ab4f8137330eaef6dce, type: 2}
 --- !u!82 &-5246049193319419238
 AudioSource:
   m_ObjectHideFlags: 0

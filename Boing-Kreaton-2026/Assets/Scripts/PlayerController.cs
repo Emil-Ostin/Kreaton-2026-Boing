@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
     [Header("Death SFX")]
     [SerializeField] AudioClip[] deathClip;
     [SerializeField] AudioClip ashClip;
-    [SerializeField] GameObject deathSprite;
 
     [SerializeField] LayerMask groundLayer;
 
@@ -67,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     void playerMove()
     {
-        if (moveAction.ReadValue<Vector2>().x != 0 && CheckGround() && !dead)
+        if (moveAction.ReadValue<Vector2>().x != 0 && CheckGround())
         {
             anim.SetBool("IsWalking", true);
         }
@@ -149,15 +148,11 @@ public class PlayerController : MonoBehaviour
         Instantiate(dustParticles, transform.position, Quaternion.identity);
         GameObject corpseObject = Instantiate(corpsePartsVFX, transform.position, Quaternion.identity);
         playerCamera.playerObject = corpseObject.transform;
-        Instantiate(deathSprite, transform.position + new Vector3(0, 0.4f, 0), Quaternion.identity);
-        anim.SetBool("IsDead", true);
+        transform.position = respawnPosition;
 
         yield return new WaitForSeconds(respawnTime);
-        transform.position = respawnPosition;
-        Debug.Log("Moved Player");
 
         playerCamera.playerObject = transform;
-        anim.SetBool("IsDead", false);
         dead = false;
         yield break;
     }

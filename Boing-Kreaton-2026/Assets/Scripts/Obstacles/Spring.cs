@@ -20,9 +20,13 @@ public class Spring : MonoBehaviour
     [Header("VSX Boing")]
     [SerializeField] AudioClip[] boingClip;
 
+    [Header("Animation")]
+    [SerializeField] AnimationClip boingBoing;
+
     Transform playerObject;
     Rigidbody2D playerRigidbody;
     AudioSource audioSource;
+    Animator animator;
 
     bool hasSaved;
     int boingClipInt;
@@ -30,6 +34,7 @@ public class Spring : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -67,6 +72,8 @@ public class Spring : MonoBehaviour
     void VelocityCalculation()
     {
         hasSaved = false;
+
+        animator.Play(boingBoing.name);
 
         if (Vector2.Dot(playerRigidbody.linearVelocity.normalized, transform.up.normalized) >= 0.5f)
         {
