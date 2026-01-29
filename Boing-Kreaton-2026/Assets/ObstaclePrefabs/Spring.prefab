@@ -308,6 +308,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ca121d37f82e65c4086f7a9db867678b, type: 3}
   - {fileID: 8300000, guid: dec382a1a1a4e7444a746b344d7b62fb, type: 3}
   - {fileID: 8300000, guid: 26997ef07f171444daf92cd0b4897d48, type: 3}
+  boingBoing: {fileID: 7400000, guid: e28161ca3fd84ab4f8137330eaef6dce, type: 2}
 --- !u!82 &-5246049193319419238
 AudioSource:
   m_ObjectHideFlags: 0
