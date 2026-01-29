@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 473d874fff346654395cf7e5bca63993
+guid: aa75b6d979ed7ce4b81e407f0384d886
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1828187571192851944
-    second: balon-Sheet_0
-  - first:
-      213: 5133237122017632245
-    second: balon-Sheet_1
-  - first:
-      213: 4688408977003402645
-    second: balon-Sheet_2
-  - first:
-      213: -2591066584380444003
-    second: balon-Sheet_3
-  - first:
-      213: -8406353684521249948
-    second: balon-Sheet_4
+      213: -4699787441768107942
+    second: kreatonbackgroundback_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -112,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: balon-Sheet_0
+      name: kreatonbackgroundback_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 11
-        width: 22
-        height: 29
+        x: 0
+        y: 0
+        width: 1280
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,96 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 81214441719f0a6e0800000000000000
-      internalID: -1828187571192851944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: balon-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 11
-        width: 24
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5ff95b527fbec3740800000000000000
-      internalID: 5133237122017632245
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: balon-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 7
-        width: 77
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5955a04df13901140800000000000000
-      internalID: 4688408977003402645
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: balon-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 94
-        y: 11
-        width: 12
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d927e986baeaa0cd0800000000000000
-      internalID: -2591066584380444003
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: balon-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 11
-        width: 8
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 46390d9dcd1a65b80800000000000000
-      internalID: -8406353684521249948
+      spriteID: a50f195e83007ceb0800000000000000
+      internalID: -4699787441768107942
       vertices: []
       indices: 
       edges: []
@@ -225,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -235,11 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      balon-Sheet_0: -1828187571192851944
-      balon-Sheet_1: 5133237122017632245
-      balon-Sheet_2: 4688408977003402645
-      balon-Sheet_3: -2591066584380444003
-      balon-Sheet_4: -8406353684521249948
+      kreatonbackgroundback_0: -4699787441768107942
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

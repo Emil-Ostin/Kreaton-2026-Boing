@@ -9,6 +9,7 @@ public class Paralax : MonoBehaviour
 
     void Start()
     {
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
         startPos = transform.position.x;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
     }
