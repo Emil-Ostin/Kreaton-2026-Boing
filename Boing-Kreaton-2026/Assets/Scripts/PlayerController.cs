@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip[] deathClip;
     [SerializeField] AudioClip ashClip;
 
+    [SerializeField] LayerMask groundLayer;
+
     SaveManager saveManager;
     Rigidbody2D myRigidbody;
     InputAction moveAction;
@@ -73,14 +75,14 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("IsWalking", false);
         }
 
-        if (CheckGround() && !glued)
+        if (!glued)
         {
             Vector2 moveVector = moveAction.ReadValue<Vector2>();
             myRigidbody.linearVelocity = new Vector2(myRigidbody.linearVelocity.x + moveVector.x * moveSpeed, myRigidbody.linearVelocity.y);
 
             myRigidbody.linearVelocity = new Vector2(Mathf.Clamp(myRigidbody.linearVelocity.x, -moveSpeed, moveSpeed), myRigidbody.linearVelocity.y);
         }
-        else if (CheckGround() && glued)
+        else if (glued)
         {
             Vector2 moveVector = moveAction.ReadValue<Vector2>();
             myRigidbody.linearVelocity = new Vector2(myRigidbody.linearVelocity.x + moveVector.x * glueVelocity, myRigidbody.linearVelocity.y);
@@ -92,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
     bool CheckGround()
     {
-        Collider2D isGrounded = Physics2D.OverlapBox(transform.position + (Vector3)groundCheckPosition, groundCheckSize, 0);
+        Collider2D isGrounded = Physics2D.OverlapBox(transform.position + (Vector3)groundCheckPosition, groundCheckSize, 0, groundLayer);
 
         if (myRigidbody.linearVelocity.y < 0)
         {
