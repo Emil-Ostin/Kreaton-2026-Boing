@@ -36,12 +36,9 @@ public class PlayerController : MonoBehaviour
     InputAction moveAction;
     PlayerCamera playerCamera;
     AudioSource audioSource;
+    Animator anim;
 
     int deathClipInt, boingClipInt;
-
-    //TEST!!!!
-    //InputAction interactAction;
-    //TEST!!!!
 
     private void Awake()
     {
@@ -50,12 +47,9 @@ public class PlayerController : MonoBehaviour
         saveManager = FindFirstObjectByType<SaveManager>();
         playerCamera = FindFirstObjectByType<PlayerCamera>();
         audioSource = GetComponent<AudioSource>();
+        anim = GetComponentInChildren<Animator>();
 
         moveAction = InputSystem.actions.FindAction("Move");
-
-        //TEST!!!!
-        //interactAction = InputSystem.actions.FindAction("Interact");
-        //TEST!!!!
     }
 
     private void FixedUpdate()
@@ -65,17 +59,20 @@ public class PlayerController : MonoBehaviour
         if (dead) return;
         CheckGround();
         playerMove();
-
-        //TEST!!!!
-        //if (interactAction.IsPressed())
-        //{
-        //    gameObject.transform.position = respawnPos;
-        //}
-        //TEST!!!!
+        //HandleFlip();
     }
 
     void playerMove()
     {
+        if (moveAction.ReadValue<Vector2>().x != 0)
+        {
+            anim.SetBool("IsWalking", true);
+        }
+        else
+        {
+            anim.SetBool("IsWalking", false);
+        }
+
         if (CheckGround() && !glued)
         {
             Vector2 moveVector = moveAction.ReadValue<Vector2>();
@@ -104,6 +101,22 @@ public class PlayerController : MonoBehaviour
         }
 
         return isGrounded;
+    }
+
+    void HandleFlip()
+    {
+        Vector2 moveVector = moveAction.ReadValue<Vector2>();
+
+        if (moveVector.x < -0.1)
+        {
+            // Turn left
+            transform.eulerAngles = new Vector3(0f, -180f, 0f);
+        }
+        else if (moveVector.x > 0.1)
+        {
+            // Turn right
+            transform.eulerAngles = new Vector3(0f, 0f, 0f);
+        }
     }
 
     void OnDeath()
@@ -168,10 +181,5 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position + (Vector3)groundCheckPosition, groundCheckSize);
-
-
-        //TEST!!!!
-        //Gizmos.DrawWireSphere(respawnPos, 1f);
-        //TEST!!!!
     }
 }

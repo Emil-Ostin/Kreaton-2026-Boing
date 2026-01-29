@@ -212,9 +212,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffebf36fc29bb74d887c72c4e82149a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 10
+  moveSpeed: 2
   minMaterialBounce: 0.2
-  maxFallVelocity: 10
+  maxFallVelocity: 8
   glueVelocity: 0
   glued: 0
   starterPos: {fileID: 0}
