@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -26,14 +27,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject dustParticles;
     bool dead;
 
+    [Header("Death SFX")]
+    [SerializeField] AudioClip[] deathClip;
+    [SerializeField] AudioClip ashClip;
+
     SaveManager saveManager;
     Rigidbody2D myRigidbody;
     InputAction moveAction;
     PlayerCamera playerCamera;
+    AudioSource audioSource;
+    Animator anim;
 
-    //TEST!!!!
-    //InputAction interactAction;
-    //TEST!!!!
+    int deathClipInt, boingClipInt;
 
     private void Awake()
     {
@@ -41,30 +46,33 @@ public class PlayerController : MonoBehaviour
 
         saveManager = FindFirstObjectByType<SaveManager>();
         playerCamera = FindFirstObjectByType<PlayerCamera>();
+        audioSource = GetComponent<AudioSource>();
+        anim = GetComponentInChildren<Animator>();
 
         moveAction = InputSystem.actions.FindAction("Move");
-
-        //TEST!!!!
-        //interactAction = InputSystem.actions.FindAction("Interact");
-        //TEST!!!!
     }
 
     private void FixedUpdate()
     {
+        deathClipInt = Random.Range(0, deathClip.Length);
+
         if (dead) return;
         CheckGround();
         playerMove();
-
-        //TEST!!!!
-        //if (interactAction.IsPressed())
-        //{
-        //    gameObject.transform.position = respawnPos;
-        //}
-        //TEST!!!!
+        //HandleFlip();
     }
 
     void playerMove()
     {
+        if (moveAction.ReadValue<Vector2>().x != 0 && CheckGround())
+        {
+            anim.SetBool("IsWalking", true);
+        }
+        else
+        {
+            anim.SetBool("IsWalking", false);
+        }
+
         if (CheckGround() && !glued)
         {
             Vector2 moveVector = moveAction.ReadValue<Vector2>();
@@ -95,6 +103,22 @@ public class PlayerController : MonoBehaviour
         return isGrounded;
     }
 
+    void HandleFlip()
+    {
+        Vector2 moveVector = moveAction.ReadValue<Vector2>();
+
+        if (moveVector.x < -0.1)
+        {
+            // Turn left
+            transform.eulerAngles = new Vector3(0f, -180f, 0f);
+        }
+        else if (moveVector.x > 0.1)
+        {
+            // Turn right
+            transform.eulerAngles = new Vector3(0f, 0f, 0f);
+        }
+    }
+
     void OnDeath()
     {
         dead = true;
@@ -109,8 +133,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void PlaySound()
+    {
+        audioSource.PlayOneShot(deathClip[deathClipInt]);
+        audioSource.PlayOneShot(ashClip);
+    }
+
     IEnumerator DeathRespawn(Vector2 respawnPosition)
     {
+        PlaySound();
+
         Instantiate(dustParticles, transform.position, Quaternion.identity);
         GameObject corpseObject = Instantiate(corpsePartsVFX, transform.position, Quaternion.identity);
         playerCamera.playerObject = corpseObject.transform;
@@ -149,10 +181,5 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position + (Vector3)groundCheckPosition, groundCheckSize);
-
-
-        //TEST!!!!
-        //Gizmos.DrawWireSphere(respawnPos, 1f);
-        //TEST!!!!
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SpringPunch : MonoBehaviour
 {
@@ -16,8 +17,17 @@ public class SpringPunch : MonoBehaviour
     [SerializeField] float launchTime;
     float launchTimer;
 
+    [Header("VFX")]
+    [SerializeField] AudioClip clip;
+    AudioSource audioSource;
+
     bool launched;
     bool retracting;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Start()
     {
@@ -72,6 +82,7 @@ public class SpringPunch : MonoBehaviour
     {
         if (launched && other.gameObject.GetComponent<Rigidbody2D>() != null)
         {
+            audioSource.PlayOneShot(clip);
             Rigidbody2D ballBody = other.gameObject.GetComponent<Rigidbody2D>();
             Vector2 savedDirection = (desiredPos - savedPos).normalized;
 
