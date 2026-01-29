@@ -17,13 +17,25 @@ public class Spring : MonoBehaviour
     [SerializeField] float resetTime;
     public float resetTimer;
 
+    [Header("VSX Boing")]
+    [SerializeField] AudioClip[] boingClip;
+
     Transform playerObject;
     Rigidbody2D playerRigidbody;
+    AudioSource audioSource;
 
     bool hasSaved;
+    int boingClipInt;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
+        boingClipInt = Random.Range(0, boingClip.Length);
+
         if (hasSaved && resetTimer > 0)
             resetTimer -= Time.deltaTime;
         else if (hasSaved && resetTimer < 0)
@@ -79,6 +91,8 @@ public class Spring : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        audioSource.PlayOneShot(boingClip[boingClipInt]);
+
         if (other.GetComponent<Rigidbody2D>() == null || hasSaved) return;
 
         resetTimer = resetTime;
