@@ -381,6 +381,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a69858e5d8d70c042a863790a640477a, type: 3}
   - {fileID: 8300000, guid: 5ce2fb9545837ad449cde4c3cffe1b33, type: 3}
   ashClip: {fileID: 8300000, guid: bed38711f0143914b821d8419fc9157b, type: 3}
+  deathSprite: {fileID: 8928976685870415880, guid: 7f888d468764ae345954a430f506fd1a, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
