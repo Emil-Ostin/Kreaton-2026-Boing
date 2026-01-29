@@ -30,23 +30,17 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D myRigidbody;
     InputAction moveAction;
     PlayerCamera playerCamera;
-
-    //TEST!!!!
-    //InputAction interactAction;
-    //TEST!!!!
+    Animator anim;
 
     private void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
 
         saveManager = FindFirstObjectByType<SaveManager>();
         playerCamera = FindFirstObjectByType<PlayerCamera>();
 
         moveAction = InputSystem.actions.FindAction("Move");
-
-        //TEST!!!!
-        //interactAction = InputSystem.actions.FindAction("Interact");
-        //TEST!!!!
     }
 
     private void FixedUpdate()
@@ -54,17 +48,19 @@ public class PlayerController : MonoBehaviour
         if (dead) return;
         CheckGround();
         playerMove();
-
-        //TEST!!!!
-        //if (interactAction.IsPressed())
-        //{
-        //    gameObject.transform.position = respawnPos;
-        //}
-        //TEST!!!!
     }
 
     void playerMove()
     {
+        if (moveAction.ReadValue<Vector2>().x != 0)
+        {
+            anim.SetBool("IsWalking", true);
+        }
+        else
+        {
+            anim.SetBool("IsWalking", false);
+        }
+
         if (CheckGround() && !glued)
         {
             Vector2 moveVector = moveAction.ReadValue<Vector2>();
@@ -149,10 +145,5 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position + (Vector3)groundCheckPosition, groundCheckSize);
-
-
-        //TEST!!!!
-        //Gizmos.DrawWireSphere(respawnPos, 1f);
-        //TEST!!!!
     }
 }
