@@ -15,14 +15,14 @@ public class SceneLoader : MonoBehaviour
     {
         Quit();
     }
-    public void StartLoad(string name)
+    public void StartLoad(int scene)
     {
-        StartCoroutine(LoadScene(name));
+        StartCoroutine(LoadScene(scene));
     }
-    public IEnumerator LoadScene(string sceneName)
+    public IEnumerator LoadScene(int scene)
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(scene);
         yield return null;
     }
 }
