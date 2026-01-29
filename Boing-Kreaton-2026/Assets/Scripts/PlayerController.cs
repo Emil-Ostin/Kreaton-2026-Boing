@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     void playerMove()
     {
-        if (moveAction.ReadValue<Vector2>().x != 0)
+        if (moveAction.ReadValue<Vector2>().x != 0 && CheckGround())
         {
             anim.SetBool("IsWalking", true);
         }
