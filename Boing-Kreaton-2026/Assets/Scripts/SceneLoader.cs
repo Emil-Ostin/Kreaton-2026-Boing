@@ -5,22 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    [SerializeField] ScreenFade fader;
-    
-    void Start()
+
+    public void FQuit()
     {
-        fader = GetComponentInChildren<ScreenFade>();
+        Invoke("Quit", 2f);
     }
 
-    void Update()
+    private void Quit()
     {
-
+        Quit();
     }
-
+    public void StartLoad(string name)
+    {
+        StartCoroutine(LoadScene(name));
+    }
     public IEnumerator LoadScene(string sceneName)
     {
-        StartCoroutine(fader.FadeOutCoroutine(1));
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene(sceneName);
         yield return null;
     }
