@@ -215,12 +215,23 @@ MonoBehaviour:
   moveSpeed: 10
   minMaterialBounce: 0.2
   maxFallVelocity: 10
+  glueVelocity: 0
+  glued: 0
+  starterPos: {fileID: 0}
   groundCheckPosition: {x: 0, y: 0.37}
   groundCheckSize: {x: 1.19, y: 0.52}
-  respawnPos: {x: -4.04, y: 12.25}
+  jumpShakeDuration: 0
   respawnTime: 1.3
   corpsePartsVFX: {fileID: 1173428562556894499, guid: 1d1bf7277ebd759478cbbee9fb39fe03, type: 3}
   dustParticles: {fileID: 1173428562556894499, guid: 7194fc5051f8b4e4ab088b009a054ab5, type: 3}
+  deathClip:
+  - {fileID: 8300000, guid: 95dd0711b0aa60442be2094bb257fd81, type: 3}
+  - {fileID: 8300000, guid: 55864ba081949074ca3d6762bcf44ce0, type: 3}
+  - {fileID: 8300000, guid: 7cb93f5db4fe5b141a93defa249d0f87, type: 3}
+  - {fileID: 8300000, guid: 30024de20bd25d64597e44c780e2f65a, type: 3}
+  - {fileID: 8300000, guid: a69858e5d8d70c042a863790a640477a, type: 3}
+  - {fileID: 8300000, guid: 5ce2fb9545837ad449cde4c3cffe1b33, type: 3}
+  ashClip: {fileID: 8300000, guid: bed38711f0143914b821d8419fc9157b, type: 3}
 --- !u!82 &2111368543382232200
 AudioSource:
   m_ObjectHideFlags: 0

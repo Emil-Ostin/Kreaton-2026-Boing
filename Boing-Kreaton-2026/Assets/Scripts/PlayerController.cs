@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -26,10 +27,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject dustParticles;
     bool dead;
 
+    [Header("Death SFX")]
+    [SerializeField] AudioClip[] deathClip;
+    [SerializeField] AudioClip ashClip;
+
     SaveManager saveManager;
     Rigidbody2D myRigidbody;
     InputAction moveAction;
     PlayerCamera playerCamera;
+    AudioSource audioSource;
+
+    int deathClipInt, boingClipInt;
 
     //TEST!!!!
     //InputAction interactAction;
@@ -41,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
         saveManager = FindFirstObjectByType<SaveManager>();
         playerCamera = FindFirstObjectByType<PlayerCamera>();
+        audioSource = GetComponent<AudioSource>();
 
         moveAction = InputSystem.actions.FindAction("Move");
 
@@ -51,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        deathClipInt = Random.Range(0, deathClip.Length);
+
         if (dead) return;
         CheckGround();
         playerMove();
@@ -109,8 +120,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void PlaySound()
+    {
+        audioSource.PlayOneShot(deathClip[deathClipInt]);
+        audioSource.PlayOneShot(ashClip);
+    }
+
     IEnumerator DeathRespawn(Vector2 respawnPosition)
     {
+        PlaySound();
+
         Instantiate(dustParticles, transform.position, Quaternion.identity);
         GameObject corpseObject = Instantiate(corpsePartsVFX, transform.position, Quaternion.identity);
         playerCamera.playerObject = corpseObject.transform;
